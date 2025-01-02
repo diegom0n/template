@@ -24,6 +24,7 @@ const components = [
   { tramiteId: "6", title: "Solicitud informes previos"},
   { tramiteId: "7", title: "Solicitud número y afectación"},
   { tramiteId: "8", title: "Solicitud de subdivisión"},
+  { tramiteId: "/", title: "Ver Todos"},
 ];
 
 export function NavigationMenuDemo() {
@@ -56,14 +57,14 @@ export function NavigationMenuDemo() {
                       </p>
                     </NavigationMenuLink>
                   </li>
-                  <ListItem href="/docs" title="Introduction">
-                    Re-usable components built using Radix UI and Tailwind CSS.
+                  <ListItem href="/" title="Introducción">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   </ListItem>
-                  <ListItem href="/docs/installation" title="Installation">
-                    How to install dependencies and structure your app.
+                  <ListItem href="/" title="Historia">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   </ListItem>
-                  <ListItem href="/docs/primitives/typography" title="Typography">
-                    Styles for headings, paragraphs, lists...etc
+                  <ListItem href="/" title="Misión">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   </ListItem>
                 </ul>
               </NavigationMenuContent>
@@ -88,7 +89,7 @@ export function NavigationMenuDemo() {
 
             {/* Contacto */}
             <NavigationMenuItem>
-              <NavigationMenuLink href="/contact" className={navigationMenuTriggerStyle()}>
+              <NavigationMenuLink href="/" className={navigationMenuTriggerStyle()}>
                 Contacto
               </NavigationMenuLink>
             </NavigationMenuItem>
