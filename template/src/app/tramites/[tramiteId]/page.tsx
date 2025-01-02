@@ -1,13 +1,23 @@
-'use client'
+'use client';
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation"; // Usa useSearchParams para acceder a los parámetros de búsqueda en Next.js 13+
 import { Button } from "@/components/ui/button"; // Asegúrate de tener este componente configurado
 
+// Definir tipos específicos para el tramite
+interface TramiteData {
+  title: string;
+  description: string;
+  steps: string[];
+  pdfUrl: string;
+}
+
 const TramiteDetailsPage = () => {
   const searchParams = useSearchParams(); // Usamos useSearchParams para obtener parámetros de búsqueda
   const tramiteId = searchParams?.get('tramiteId'); // Accedemos al parámetro 'tramiteId' desde la URL
-  const [tramiteData, setTramiteData] = useState<any>(null); // Datos del trámite
+
+  // Utilizamos un tipo específico para tramiteData
+  const [tramiteData, setTramiteData] = useState<TramiteData | null>(null); // Datos del trámite
   const [file, setFile] = useState<File | null>(null); // Archivo seleccionado para subir
   const [isFileUploaded, setIsFileUploaded] = useState(false); // Estado para saber si el archivo fue subido
 
@@ -15,7 +25,7 @@ const TramiteDetailsPage = () => {
   useEffect(() => {
     if (!tramiteId) return;
 
-    const tramiteDataFromApi: Record<string, any> = {
+    const tramiteDataFromApi: Record<string, TramiteData> = {
       "1": {
         title: "Autorización para vehículos con sobrepeso",
         description: "Este trámite permite que los vehículos con sobrepeso y/o sobredimensionados circulen por caminos públicos bajo ciertas condiciones. Aquí se detallan los requisitos y pasos para solicitar esta autorización.",
@@ -69,7 +79,7 @@ const TramiteDetailsPage = () => {
       {/* Enlace al PDF para ver o descargar */}
       <div className="mb-6">
         <a href={tramiteData?.pdfUrl} target="_blank" rel="noopener noreferrer">
-          <Button variant="primary" className="mb-4">Ver documento PDF</Button>
+          <Button variant="default" className="mb-4">Ver documento PDF</Button>
         </a>
       </div>
 
@@ -101,9 +111,9 @@ const TramiteDetailsPage = () => {
       <div className="mb-6">
         <h2 className="text-xl font-semibold mb-4">Instrucciones</h2>
         <p className="text-lg">
-          1. Descargue el documento en formato PDF usando el botón "Ver documento PDF".<br />
+          1. Descargue el documento en formato PDF usando el botón Ver documento PDF.<br />
           2. Una vez descargado, complete los pasos indicados en las instrucciones del trámite.<br />
-          3. Luego, cargue el archivo descargado en el formulario de "Subir archivo descargado" para completar su solicitud.<br />
+          3. Luego, cargue el archivo descargado en el formulario de Subir archivo descargado para completar su solicitud.<br />
           4. Asegúrese de que el archivo esté en uno de los formatos permitidos (.pdf, .docx, .jpg, .png).
         </p>
       </div>

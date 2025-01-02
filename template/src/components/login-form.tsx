@@ -38,6 +38,7 @@ export function LoginForm({
       } else {
         console.log("Inicio de sesión exitoso"); // Acción adicional si es necesario
       }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setError("Hubo un problema al iniciar sesión. Inténtelo nuevamente.");
     } finally {
